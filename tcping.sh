@@ -2,7 +2,7 @@
 # tcping.sh - Pure Bash + nc TCP ping with colorful statistics + uptime/downtime
 # Usage: ./tcping.sh [-4|-6] host port [count]
 
-# ANSI 颜色
+# ANSI colours
 RED="\033[31m"
 GREEN="\033[32m"
 YELLOW="\033[33m"
@@ -26,16 +26,16 @@ fi
 
 host=$1
 port=$2
-count=${3:-4}  # 默认 4 次
+count=${3:-4}  # default 4 times
 
-# 统计变量
+# statistics variables
 success=0
 fail=0
 rtts=()
 start_time_human=$(date "+%Y-%m-%d %H:%M:%S")
 start_epoch=$(date +%s)
 
-# uptime/downtime 相关
+# uptime/downtime variables
 total_uptime=0
 total_downtime=0
 longest_up=0
@@ -49,7 +49,7 @@ longest_up_end=""
 longest_down_start=""
 longest_down_end=""
 
-# 定义退出时打印统计信息的函数
+# print statistics on exit
 print_stats() {
     end_time_human=$(date "+%Y-%m-%d %H:%M:%S")
     end_epoch=$(date +%s)
@@ -94,10 +94,10 @@ print_stats() {
         $((duration/3600)) $((duration%3600/60)) $((duration%60))
 }
 
-# 捕获 Ctrl+C
+# trap Ctrl+C
 trap print_stats EXIT
 
-# 主循环
+# main loop
 for ((i=1; i<=count || count==0; i++)); do
     t1=$(date +%s%3N)
     ts=$(date "+%Y-%m-%d %H:%M:%S")
@@ -109,7 +109,7 @@ for ((i=1; i<=count || count==0; i++)); do
         ((success++))
         last_success_time=$ts
 
-        # uptime/downtime 更新
+        # uptime/downtime update
         ((current_up++))
         total_uptime=$((total_uptime+1))
         if ((current_up > longest_up)); then
