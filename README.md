@@ -1,5 +1,7 @@
 This TCP ping shell script utilizes pure Bash and nc to achieve TCP ping. It has colorful statistics output (including uptime/downtime) on exit. 
 
+Requires: nc (netcat-openbsd), awk, date (GNU coreutils). 
+
 One command to start：
 
 ```bash
