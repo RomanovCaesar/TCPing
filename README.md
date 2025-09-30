@@ -5,7 +5,7 @@ Requires: nc (netcat-openbsd), awk, date (GNU coreutils).
 One command to start：
 
 ```bash
-curl -L https://raw.githubusercontent.com/RomanovCaesar/TCPing/refs/heads/main/tcping.sh && chmod +x tcping.sh
+curl -L https://raw.githubusercontent.com/RomanovCaesar/TCPing/refs/heads/main/tcping.sh -o tcping.sh && chmod +x tcping.sh
 ```
 
 Usage:
